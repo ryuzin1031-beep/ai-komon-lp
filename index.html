@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI顧問｜AI導入・業務自動化・DX・Webマーケティングを、一緒に作って一緒に改善する伴走型支援</title>
+<meta name="description" content="AI導入による業務効率化・自動化とDX化、Webマーケティング支援。事業のヒアリングから業務の棚卸し、要件定義、プロダクト開発、改善まで伴走します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0f1b2e;--navy2:#1a2a44;--navy3:#22355a;
+  --gold:#c6a45c;--gold-d:#a8863e;--gold-l:#f3ead6;
+  --ink:#1f2937;--muted:#6b7280;--ivory:#f7f5f1;--line:#e5e1d8;--white:#fff;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN",serif;
+  --sans:"Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:var(--sans);color:var(--ink);background:var(--white);line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,video{max-width:100%;display:block}
+button{font-family:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* ---------- Header ---------- */
+header{position:sticky;top:0;z-index:100;background:rgba(15,27,46,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(198,164,92,.25)}
+.h-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;cursor:pointer}
+.logo-mark{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-d));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:800;color:var(--navy);font-size:15px}
+.logo-text{font-family:var(--serif);font-weight:800;font-size:20px;letter-spacing:.06em}
+.logo-text small{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.24em;color:var(--gold);font-weight:500;margin-top:-2px}
+nav.gnav{display:flex;align-items:center;gap:22px}
+nav.gnav a{white-space:nowrap;color:#d6dbe5;font-size:13.5px;font-weight:500;padding:6px 0;border-bottom:2px solid transparent;transition:.2s}
+nav.gnav a:hover{color:#fff;border-bottom-color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 28px;font-weight:700;font-size:15px;cursor:pointer;transition:.2s;white-space:nowrap}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--navy);box-shadow:0 8px 22px rgba(198,164,92,.35)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(198,164,92,.45)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
+nav.gnav .btn{padding:10px 20px;font-size:13px;border-bottom:0;color:var(--navy)}
+.hamburger{display:none;background:none;border:0;cursor:pointer;padding:10px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;margin:5px 0;transition:.25s}
+.hamburger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.on span:nth-child(2){opacity:0}
+.hamburger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:1180px){
+  .hamburger{display:block}
+  nav.gnav{display:none;position:fixed;inset:68px 0 0 0;background:var(--navy);flex-direction:column;align-items:stretch;gap:0;padding:12px 24px 40px;overflow-y:auto}
+  nav.gnav.open{display:flex}
+  nav.gnav a{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:15px}
+  nav.gnav .btn{margin-top:20px;padding:15px}
+}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;background:radial-gradient(1200px 600px at 85% -10%,#2a4170 0%,transparent 60%),linear-gradient(160deg,var(--navy) 0%,#0b1424 100%);color:#fff;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:88px 24px 96px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.3em}
+.kicker::before{content:"";width:28px;height:2px;background:var(--gold)}
+.hero h1{font-family:var(--serif);font-weight:800;font-size:clamp(32px,4.4vw,54px);line-height:1.38;margin:20px 0 22px;letter-spacing:.02em}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{color:#c9d1df;font-size:16px;line-height:2;max-width:560px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 34px}
+.hero-tags span{font-size:12.5px;border:1px solid rgba(198,164,92,.5);color:#ecdcb8;padding:5px 12px;border-radius:999px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-visual{position:relative;height:440px}
+.hv{position:absolute;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);background:#fff;cursor:zoom-in;transition:transform .3s}
+.hv:hover{transform:translateY(-6px)}
+.hv-1{width:86%;top:0;right:0;transform:rotate(1.5deg)}
+.hv-2{width:62%;bottom:10px;left:0;transform:rotate(-2.5deg)}
+.hv-3{width:42%;bottom:-10px;right:4%;transform:rotate(3deg)}
+.hv-1:hover{transform:rotate(1.5deg) translateY(-6px)}.hv-2:hover{transform:rotate(-2.5deg) translateY(-6px)}.hv-3:hover{transform:rotate(3deg) translateY(-6px)}
+.hero-stats{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.18)}
+.stats-grid{max-width:1200px;margin:0 auto;padding:26px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{text-align:center}
+.stat b{font-family:var(--serif);font-size:36px;color:var(--gold);font-weight:800;line-height:1}
+.stat b small{font-size:15px;margin-left:2px}
+.stat>span{display:block;color:#aeb8ca;font-size:12.5px;margin-top:8px}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;padding:60px 24px 70px}
+  .hero-visual{height:300px}
+  .stats-grid{grid-template-columns:repeat(2,1fr);row-gap:24px}
+}
+
+/* ---------- Section common ---------- */
+section{padding:100px 0}
+.sec-en{display:flex;align-items:center;gap:12px;color:var(--gold-d);font-size:12px;font-weight:700;letter-spacing:.32em;margin-bottom:12px}
+.sec-en::before{content:"";width:30px;height:2px;background:var(--gold)}
+.sec-title{font-family:var(--serif);font-weight:800;font-size:clamp(26px,3.2vw,38px);color:var(--navy);line-height:1.45;position:relative;padding-left:18px}
+.sec-title::before{content:"";position:absolute;left:0;top:.18em;bottom:.18em;width:5px;border-radius:3px;background:linear-gradient(var(--gold),var(--gold-d))}
+.sec-lead{color:var(--muted);margin-top:18px;max-width:760px;font-size:15.5px}
+.center{text-align:center}
+.center .sec-en{justify-content:center}
+.center .sec-title{padding-left:0}
+.center .sec-title::before{display:none}
+.center .sec-lead{margin-left:auto;margin-right:auto}
+.bg-ivory{background:var(--ivory)}
+.bg-navy{background:var(--navy);color:#fff}
+.bg-navy .sec-title{color:#fff}
+.bg-navy .sec-lead{color:#b9c3d4}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Problems ---------- */
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.prob{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 22px;display:flex;gap:14px;align-items:flex-start}
+.prob i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--gold-l);color:var(--gold-d);display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:900;font-size:13px}
+.prob p{font-size:15px;font-weight:500}
+.prob-answer{margin-top:44px;text-align:center;font-family:var(--serif);font-size:clamp(20px,2.4vw,28px);font-weight:800;color:var(--navy);line-height:1.7}
+.prob-answer span{color:var(--gold-d)}
+@media(max-width:860px){.prob-grid{grid-template-columns:1fr}}
+
+/* ---------- Service pillars ---------- */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.pillar{background:#fff;border-radius:16px;border:1px solid var(--line);padding:34px 28px;position:relative;overflow:hidden;transition:.25s}
+.pillar:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,27,46,.10)}
+.pillar::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--navy),var(--gold))}
+.pillar .num{font-family:var(--serif);font-size:44px;font-weight:800;color:var(--gold-l);line-height:1;position:absolute;right:20px;top:18px}
+.pillar .ico{width:52px;height:52px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.pillar .ico svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pillar h3{font-family:var(--serif);font-size:21px;color:var(--navy);line-height:1.5;margin-bottom:12px}
+.pillar p{font-size:14.5px;color:var(--muted)}
+.pillar ul{list-style:none;margin-top:16px;border-top:1px dashed var(--line);padding-top:14px}
+.pillar li{font-size:14px;padding:4px 0 4px 20px;position:relative}
+.pillar li::before{content:"";position:absolute;left:2px;top:12px;width:8px;height:8px;border-radius:2px;background:var(--gold)}
+@media(max-width:900px){.pillars{grid-template-columns:1fr}}
+
+/* ---------- Partner (伴走) ---------- */
+.partner-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end}
+.partner-quote{font-family:var(--serif);font-size:clamp(22px,2.6vw,30px);font-weight:800;line-height:1.7;color:#fff}
+.partner-quote span{color:var(--gold)}
+.compare{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+.compare .col{padding:34px 30px}
+.compare .col h4{font-size:15px;letter-spacing:.08em;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.compare .col.other{background:rgba(255,255,255,.04);color:#aab4c6}
+.compare .col.ours{background:linear-gradient(160deg,#1d2f50,#16263f);color:#fff;position:relative}
+.compare .col.ours h4{color:var(--gold)}
+.compare .tag{font-size:11px;padding:3px 10px;border-radius:999px;border:1px solid currentColor}
+.compare ul{list-style:none}
+.compare li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:15px;display:flex;gap:12px}
+.compare li:last-child{border-bottom:0}
+.compare li b{flex:none;width:86px;font-size:12.5px;font-weight:500;opacity:.7;padding-top:2px}
+.compare .ours li::before{content:"✓";color:var(--gold);font-weight:900;order:2;margin-left:auto}
+.partner-points{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.pp{border:1px solid rgba(198,164,92,.35);border-radius:12px;padding:22px}
+.pp b{display:block;color:var(--gold);font-family:var(--serif);font-size:18px;margin-bottom:6px}
+.pp p{font-size:14px;color:#c3cbd9}
+@media(max-width:900px){.partner-head,.compare,.partner-points{grid-template-columns:1fr}}
+
+/* ---------- Flow ---------- */
+.flow{margin-top:56px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px;position:relative}
+.flow::before{content:"";position:absolute;top:38px;left:6%;right:6%;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 14px);z-index:0}
+.step{position:relative;z-index:1;text-align:center;cursor:pointer}
+.step .circle{width:76px;height:76px;margin:0 auto;border-radius:50%;background:#fff;border:2px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--serif);color:var(--navy);transition:.25s;box-shadow:0 6px 16px rgba(15,27,46,.08)}
+.step .circle small{font-family:var(--sans);font-size:9px;letter-spacing:.2em;color:var(--gold-d);font-weight:700}
+.step .circle b{font-size:24px;line-height:1}
+.step h4{margin-top:14px;font-size:14.5px;color:var(--navy);line-height:1.5;min-height:3em}
+.step.active .circle,.step:hover .circle{background:var(--navy);color:#fff;transform:translateY(-3px)}
+.step.active .circle small,.step:hover .circle small{color:var(--gold)}
+.flow-detail{margin-top:34px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px 34px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;box-shadow:0 10px 30px rgba(15,27,46,.05)}
+.flow-detail h3{font-family:var(--serif);font-size:24px;color:var(--navy);margin-bottom:12px}
+.flow-detail p{color:var(--muted);font-size:15px}
+.flow-detail .side{background:var(--ivory);border-radius:12px;padding:22px}
+.flow-detail .side h5{font-size:12px;letter-spacing:.2em;color:var(--gold-d);margin-bottom:10px}
+.flow-detail .side ul{list-style:none}
+.flow-detail .side li{font-size:14px;padding:5px 0 5px 18px;position:relative}
+.flow-detail .side li::before{content:"";position:absolute;left:0;top:13px;width:8px;height:2px;background:var(--gold)}
+.flow-loop{margin-top:22px;text-align:center;font-size:14px;color:var(--navy);font-weight:700}
+.flow-loop span{display:inline-flex;align-items:center;gap:8px;background:var(--gold-l);padding:8px 18px;border-radius:999px}
+@media(max-width:900px){
+  .flow{grid-template-columns:repeat(3,1fr);row-gap:26px}
+  .flow::before{display:none}
+  .flow-detail{grid-template-columns:1fr;padding:24px}
+}
+
+/* ---------- Works ---------- */
+.works-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.wtab{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:10px 20px;font-size:14px;font-weight:700;color:var(--navy);cursor:pointer;transition:.2s}
+.wtab:hover{border-color:var(--gold)}
+.wtab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.work{display:none;margin-top:28px;grid-template-columns:1.25fr .75fr;gap:36px;align-items:start}
+.work.on{display:grid;animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.work-shots{display:grid;gap:14px}
+.work-shots.two{grid-template-columns:1fr 1fr}
+.shot{border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 14px 34px rgba(15,27,46,.10);background:#fff;cursor:zoom-in;transition:.25s}
+.shot:hover{transform:translateY(-3px)}
+.shot.wide{grid-column:1/-1}
+.work-info .label{display:inline-block;background:var(--gold-l);color:var(--gold-d);font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:12px}
+.work-info h3{font-family:var(--serif);font-size:25px;color:var(--navy);line-height:1.5;margin-bottom:12px}
+.work-info p{color:var(--muted);font-size:15px}
+.work-info ul{list-style:none;margin-top:18px}
+.work-info li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.work-info li::before{content:"";flex:none;width:18px;height:18px;margin-top:4px;border-radius:50%;background:var(--navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c6a45c' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/11px no-repeat}
+.note{font-size:12px;color:var(--muted);margin-top:14px}
+@media(max-width:900px){.work.on{grid-template-columns:1fr}.work-shots.two{grid-template-columns:1fr}}
+
+/* ---------- Funnel ---------- */
+.funnel-cases{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:48px}
+.case{background:#fff;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.case-head{background:var(--navy);color:#fff;padding:22px 26px}
+.case-head small{color:var(--gold);font-size:11px;letter-spacing:.24em;font-weight:700}
+.case-head h3{font-family:var(--serif);font-size:21px;margin-top:4px}
+.case-head p{font-size:13px;color:#b8c2d3;margin-top:4px}
+.case-body{padding:26px}
+.fstep{display:flex;gap:14px;position:relative;padding-bottom:18px}
+.fstep:not(:last-child)::after{content:"";position:absolute;left:19px;top:40px;bottom:0;width:2px;background:linear-gradient(var(--gold),rgba(198,164,92,.2))}
+.fstep .dot{flex:none;width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--ivory);border:1px solid var(--line)}
+.fstep.key .dot{background:var(--navy);border-color:var(--navy)}
+.fstep h4{font-size:15px;color:var(--navy);line-height:1.5}
+.fstep p{font-size:13.5px;color:var(--muted);line-height:1.7}
+.fstep .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.fstep .chips span{font-size:11.5px;background:var(--gold-l);color:#7a5f25;padding:2px 9px;border-radius:999px}
+.case-foot{border-top:1px dashed var(--line);padding:16px 26px;font-size:13px;color:var(--navy);background:#fcfbf8}
+.case-foot b{color:var(--gold-d)}
+.funnel-build{margin-top:40px;display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.fb{background:var(--navy);border-radius:12px;padding:18px 12px;text-align:center;color:#fff}
+.fb .e{font-size:24px}
+.fb b{display:block;font-size:13.5px;margin-top:6px;line-height:1.5}
+.fb span{display:block;font-size:11.5px;color:#a9b4c8;margin-top:4px;line-height:1.6}
+@media(max-width:960px){.funnel-cases{grid-template-columns:1fr}.funnel-build{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- Video ---------- */
+.videos{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
+.vcard{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.vframe{position:relative;aspect-ratio:9/16;background:#000;cursor:pointer}
+.vframe video{width:100%;height:100%;object-fit:cover}
+.vframe .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(transparent 55%,rgba(0,0,0,.55));transition:.25s}
+.vframe .play span{width:68px;height:68px;border-radius:50%;background:rgba(198,164,92,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.vframe .play span::before{content:"";border-left:20px solid var(--navy);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
+.vframe.playing .play{opacity:0;pointer-events:none}
+.vinfo{padding:20px 22px}
+.vinfo h3{font-family:var(--serif);font-size:18px;color:var(--navy);line-height:1.5}
+.vinfo p{font-size:13.5px;color:var(--muted);margin-top:6px}
+.vinfo .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.vinfo .chips span{font-size:11.5px;border:1px solid var(--line);padding:2px 9px;border-radius:999px;color:var(--navy)}
+@media(max-width:900px){.videos{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}}
+
+/* ---------- Efficiency (job tabs) ---------- */
+.jobs-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:40px;border-bottom:2px solid var(--line)}
+.jtab{background:none;border:0;padding:12px 22px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px}
+.jtab.on{color:var(--navy);border-bottom-color:var(--gold)}
+.jpanel{display:none;margin-top:28px}
+.jpanel.on{display:block;animation:fade .4s ease}
+.jgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.jcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+.jcard h4{font-size:15.5px;color:var(--navy);margin-bottom:10px;line-height:1.5}
+.jcard .ba{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:13.5px;align-items:start}
+.jcard .ba b{font-size:11px;padding:1px 8px;border-radius:4px;margin-top:3px;white-space:nowrap}
+.jcard .ba .b{background:#eceef2;color:#6b7280}
+.jcard .ba .a{background:var(--navy);color:var(--gold)}
+.jcard .ba p{color:var(--ink)}
+.jcard .ba p.bf{color:var(--muted)}
+.jnote{margin-top:22px;background:var(--navy);color:#fff;border-radius:12px;padding:20px 24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.jnote p{flex:1;font-size:14px;color:#c9d1df;min-width:240px}
+.jnote b{color:var(--gold)}
+@media(max-width:900px){.jgrid{grid-template-columns:1fr}.jtab{padding:10px 14px;font-size:14px}}
+
+/* ---------- Learn ---------- */
+.learn{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.learn-shots{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.learn-shots .shot:first-child{grid-column:1/-1}
+.learn ul{list-style:none;margin-top:20px}
+.learn li{padding:10px 0 10px 28px;position:relative;border-bottom:1px solid var(--line);font-size:15px}
+.learn li::before{content:"";position:absolute;left:0;top:17px;width:14px;height:14px;border-radius:3px;background:var(--gold)}
+@media(max-width:900px){.learn{grid-template-columns:1fr}}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:860px;margin:44px auto 0}
+.qa{border-bottom:1px solid var(--line)}
+.qa button{width:100%;text-align:left;background:none;border:0;padding:22px 44px 22px 0;font-size:16px;font-weight:700;color:var(--navy);cursor:pointer;position:relative;display:flex;gap:14px;line-height:1.6}
+.qa button::before{content:"Q";font-family:var(--serif);color:var(--gold-d);font-size:20px;line-height:1.3}
+.qa button::after{content:"";position:absolute;right:8px;top:30px;width:12px;height:12px;border-right:2px solid var(--navy);border-bottom:2px solid var(--navy);transform:rotate(45deg);transition:.25s}
+.qa.open button::after{transform:rotate(-135deg);top:34px}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.qa .ans p{padding:0 0 22px 32px;color:var(--muted);font-size:15px}
+
+/* ---------- CTA ---------- */
+.cta{background:linear-gradient(150deg,var(--navy),#0b1424);color:#fff;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(rgba(198,164,92,.22),transparent 70%);right:-160px;top:-160px}
+.cta-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.cta h2{font-family:var(--serif);font-size:clamp(26px,3vw,38px);line-height:1.5}
+.cta h2 span{color:var(--gold)}
+.cta p{color:#c3cbd9;margin-top:16px}
+.cta-points{list-style:none;margin-top:22px}
+.cta-points li{padding:8px 0 8px 28px;position:relative;color:#e8ecf3}
+.cta-points li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:900}
+form.contact{background:#fff;color:var(--ink);border-radius:16px;padding:30px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.f-row{margin-bottom:16px}
+.f-row label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.f-row label .req{color:#b04338;font-size:11px;margin-left:6px}
+.f-row input,.f-row textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;font-size:15px;font-family:inherit;background:#fcfbf8}
+.f-row input:focus,.f-row textarea:focus{outline:none;border-color:var(--gold)}
+.f-row textarea{min-height:110px;resize:vertical}
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.checks label{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:500;cursor:pointer;margin:0;color:var(--ink)}
+.checks input{accent-color:var(--navy);width:auto}
+.checks label:has(input:checked){border-color:var(--navy);background:#eef1f7}
+form.contact .btn{width:100%;margin-top:6px}
+.f-err{color:#b04338;font-size:13px;margin-top:8px;display:none}
+@media(max-width:900px){.cta-grid{grid-template-columns:1fr}}
+
+/* ---------- Footer ---------- */
+footer{background:#0a1220;color:#8f9ab0;padding:44px 0 30px;font-size:13px}
+.f-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.f-nav{display:flex;gap:20px;flex-wrap:wrap}
+.f-nav a:hover{color:var(--gold)}
+.copy{margin-top:24px;text-align:center;font-size:12px;color:#5f6a80}
+
+/* ---------- Modal / Lightbox / Totop ---------- */
+.overlay{position:fixed;inset:0;background:rgba(8,14,26,.86);display:none;align-items:center;justify-content:center;z-index:400;padding:24px}
+.overlay.open{display:flex}
+.lightbox img{max-width:min(1200px,94vw);max-height:84vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lightbox .cap{color:#dfe5ef;text-align:center;margin-top:12px;font-size:14px}
+.x{position:absolute;top:18px;right:24px;background:none;border:0;color:#fff;font-size:36px;cursor:pointer;line-height:1}
+.modal{background:#fff;border-radius:16px;max-width:520px;width:100%;padding:34px;position:relative}
+.modal h3{font-family:var(--serif);font-size:22px;color:var(--navy);margin-bottom:12px}
+.modal p{color:var(--muted);font-size:15px;white-space:pre-line}
+.modal .x{color:var(--navy);top:10px;right:16px;font-size:30px}
+.modal .btn{margin-top:22px}
+#totop{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;background:var(--navy);border:1px solid var(--gold);color:var(--gold);font-size:18px;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;z-index:90}
+#totop.show{opacity:1;pointer-events:auto}
+.sp-cta{display:none}
+@media(max-width:700px){
+  section{padding:72px 0}
+  .sp-cta{display:block;position:fixed;left:12px;right:80px;bottom:16px;z-index:89}
+  .sp-cta .btn{width:100%;padding:13px}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== Header ==================== -->
+<header>
+  <div class="h-inner">
+    <a class="logo" href="#top" aria-label="トップへ">
+      <span class="logo-mark">AI</span>
+      <span class="logo-text">AI顧問<small>AI ADVISORY &amp; BUILD</small></span>
+    </a>
+    <nav class="gnav" id="gnav">
+      <a href="#service">サービス</a>
+      <a href="#partner">伴走型の支援</a>
+      <a href="#flow">支援の流れ</a>
+      <a href="#works">開発実績</a>
+      <a href="#funnel">マーケ導線</a>
+      <a href="#video">動画編集</a>
+      <a href="#efficiency">業務効率化</a>
+      <a href="#faq">よくある質問</a>
+      <a class="btn btn-gold" href="#contact">無料相談する</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ==================== Hero ==================== -->
+<div class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="kicker">AI ADVISORY SERVICE</div>
+      <h1>AIを「相談」で<br>終わらせない。<br><em>一緒に作って、<br>一緒に改善する。</em></h1>
+      <p class="lead">AI導入による業務効率化・自動化とDX化、そしてWebマーケティングまで。事業のヒアリングから、業務の棚卸し、要件定義、プロダクトの開発、使いながらの改善まで、あなたの会社のチームの一員として伴走します。</p>
+      <div class="hero-tags">
+        <span>AI導入・業務自動化</span><span>業務システム・DB開発</span><span>SNS運用・広告</span><span>LINE構築</span><span>動画編集</span><span>社内研修</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#contact">無料で相談する →</a>
+        <a class="btn btn-ghost" href="#works">開発実績を見る</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img class="hv hv-1" src="assets/img/sns-os.webp" alt="SNS運用ツールのダッシュボード" data-cap="SNS運用ツール（ダッシュボード）">
+      <img class="hv hv-2" src="assets/img/db-list.png" alt="業務データベースの一覧画面" data-cap="業務データベース（応募者の管理）">
+      <img class="hv hv-3" src="assets/img/learn-courses.webp" alt="学習サイトの講座一覧" data-cap="学習サイト（講座一覧）">
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stats-grid">
+      <div class="stat"><b><span class="count" data-to="3">0</span><small>領域</small></b><span>AI・DX・マーケを一括で</span></div>
+      <div class="stat"><b><span class="count" data-to="6">0</span><small>STEP</small></b><span>ヒアリングから改善まで</span></div>
+      <div class="stat"><b><span class="count" data-to="5">0</span><small>媒体</small></b><span>SNSの同時予約に対応した開発実績</span></div>
+      <div class="stat"><b><span class="count" data-to="147">0</span><small>本</small></b><span>自社で制作したAI・SNSの学習教材</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== Problems ==================== -->
+<section class="bg-ivory" id="problems">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="sec-en">PROBLEMS</div>
+      <h2 class="sec-title">こんなお悩み、ありませんか？</h2>
+    </div>
+    <div class="prob-grid">
+      <div class="prob reveal"><i>!</i><p>AIが便利なのは分かるが、自社のどの業務に使えばいいか分からない</p></div>
+      <div class="prob reveal"><i>!</i><p>ChatGPTを契約したが、一部の社員しか使っていない</p></div>
+      <div class="prob reveal"><i>!</i><p>Excelと紙とチャットに情報が散らばり、管理が追いつかない</p></div>
+      <div class="prob reveal"><i>!</i><p>コンサルに頼んだが、提案書をもらって終わってしまった</p></div>
+      <div class="prob reveal"><i>!</i><p>SNSや広告をやっているが、問い合わせ・売上につながらない</p></div>
+      <div class="prob reveal"><i>!</i><p>業務ツールを作りたいが、何から決めればいいか分からない</p></div>
+    </div>
+    <p class="prob-answer reveal">必要なのは、アドバイスだけではなく<br><span>「一緒に手を動かしてくれる人」</span>です。</p>
+  </div>
+</section>
+
+<!-- ==================== Service ==================== -->
+<section id="service">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-en">SERVICE</div>
+      <h2 class="sec-title">AI顧問がご支援する3つの領域</h2>
+      <p class="sec-lead">AI・業務システム・マーケティングを、別々の会社に頼む必要はありません。事業全体を見ながら、効果の大きいところから順番に形にしていきます。</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <span class="num">01</span>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>AI導入による<br>業務効率化・自動化</h3>
+        <p>文章・調査・資料・集計・確認など、毎日くり返している業務をAIに置き換えます。社内のルールづくりと、社員が使いこなすための研修まで行います。</p>
+        <ul><li>業務の棚卸しとAI化マップ</li><li>AIの選定・社内ガイドライン</li><li>定型作業の自動化（GAS・エージェント）</li><li>社員向けの研修・マニュアル</li></ul>
+      </div>
+      <div class="pillar reveal">
+        <span class="num">02</span>
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></div>
+        <h3>DX化<br>（業務ツール・データベース開発）</h3>
+        <p>Excelや紙で管理している情報を、業務に合わせた専用のツールにします。既製品が合わない業務こそ、要件から一緒に決めて作ります。</p>
+        <ul><li>顧客・案件・応募者などの管理DB</li><li>SNS運用・投稿予約などの専用ツール</li><li>社内向けの学習サイト・ポータル</li><li>期限のリマインド・文章の自動作成</li></ul>
+      </div>
+      <div class="pillar reveal">
+        <span class="num">03</span>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+        <h3>Webマーケティング<br>支援</h3>
+        <p>SNS広告からLINE構築まで、「知ってもらう」から「申し込み」までの導線を設計し、実装します。広告・SNS用の動画の台本と編集も対応します。</p>
+        <ul><li>SNS運用（企画・台本・分析）</li><li>広告動画の台本・撮影指示書・編集</li><li>LINEのシナリオ・リッチメッセージ</li><li>数字の分析と改善提案</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Partner ==================== -->
+<section class="bg-navy" id="partner">
+  <div class="wrap">
+    <div class="partner-head">
+      <div class="reveal">
+        <div class="sec-en">PARTNERSHIP</div>
+        <h2 class="sec-title">コンサルするだけじゃない。<br>伴走型の支援です。</h2>
+        <p class="sec-lead">「やるべきこと」を伝えて終わりにはしません。決めたことは一緒に形にし、使ってみて、数字を見て、また一緒に直す。そのくり返しで、AIとデジタルを会社の力にしていきます。</p>
+      </div>
+      <p class="partner-quote reveal">提案書ではなく、<br><span>明日から使える仕組み</span>を<br>お渡しします。</p>
+    </div>
+    <div class="compare reveal">
+      <div class="col other">
+        <h4>一般的なコンサル <span class="tag">提案型</span></h4>
+        <ul>
+          <li><b>成果物</b>課題の分析と提案書</li>
+          <li><b>実行</b>社内で進める（実行は社内まかせ）</li>
+          <li><b>ツール</b>既製品の紹介まで</li>
+          <li><b>改善</b>契約が終わると止まりがち</li>
+        </ul>
+      </div>
+      <div class="col ours">
+        <h4>AI顧問 <span class="tag">伴走型</span></h4>
+        <ul>
+          <li><b>成果物</b>実際に動くツール・仕組み・導線</li>
+          <li><b>実行</b>一緒に作り、一緒に使い始める</li>
+          <li><b>ツール</b>業務に合わせて開発まで行う</li>
+          <li><b>改善</b>数字を見ながら継続して改善</li>
+        </ul>
+      </div>
+    </div>
+    <div class="partner-points">
+      <div class="pp reveal"><b>一緒に決める</b><p>現場の方に話を聞き、業務の流れを一緒に書き出してから、何を作るかを決めます。</p></div>
+      <div class="pp reveal"><b>一緒に作る</b><p>小さく作って、実際の業務で試します。画面を見ながら、その場で直していきます。</p></div>
+      <div class="pp reveal"><b>一緒に育てる</b><p>使い方の研修・マニュアルを用意し、社内で回せる状態になるまで支援します。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Flow ==================== -->
+<section id="flow">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="sec-en">FLOW</div>
+      <h2 class="sec-title">ご支援の流れ</h2>
+      <p class="sec-lead">いきなりツールを作ることはしません。事業と業務を理解するところから始め、効果が大きいところから順番に形にします。各ステップを押すと、詳しい内容を見られます。</p>
+    </div>
+    <div class="flow reveal" id="flowSteps">
+      <div class="step active" data-i="0"><div class="circle"><small>STEP</small><b>01</b></div><h4>ヒアリング<br>課題の確認</h4></div>
+      <div class="step" data-i="1"><div class="circle"><small>STEP</small><b>02</b></div><h4>業務の<br>棚卸し</h4></div>
+      <div class="step" data-i="2"><div class="circle"><small>STEP</small><b>03</b></div><h4>AIでできる<br>ことの選定</h4></div>
+      <div class="step" data-i="3"><div class="circle"><small>STEP</small><b>04</b></div><h4>要件定義</h4></div>
+      <div class="step" data-i="4"><div class="circle"><small>STEP</small><b>05</b></div><h4>プロダクト<br>開発</h4></div>
+      <div class="step" data-i="5"><div class="circle"><small>STEP</small><b>06</b></div><h4>改善</h4></div>
+    </div>
+    <div class="flow-detail reveal" id="flowDetail"></div>
+    <p class="flow-loop reveal"><span>↻ STEP06の改善から、次の業務のSTEP02へ。くり返すほど、会社の仕組みが強くなります。</span></p>
+  </div>
+</section>
+
+<!-- ==================== Works ==================== -->
+<section class="bg-ivory" id="works">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-en">WORKS</div>
+      <h2 class="sec-title">作れるもの・開発実績</h2>
+      <p class="sec-lead">業務に合わせた専用のツールを、要件定義から開発まで行います。画像を押すと拡大して見られます。</p>
+    </div>
+    <div class="works-tabs reveal" id="worksTabs">
+      <button class="wtab on" data-w="0">SNS運用ツール</button>
+      <button class="wtab" data-w="1">投稿予約ツール</button>
+      <button class="wtab" data-w="2">学習サイト</button>
+      <button class="wtab" data-w="3">業務データベース</button>
+    </div>
+
+    <div class="work on">
+      <div class="work-shots"><img class="shot" src="assets/img/sns-os.webp" alt="SNS運用ツールのダッシュボード" data-cap="SNS運用ツール：運用フローと次にやること、生成ルールをひと目で"></div>
+      <div class="work-info">
+        <span class="label">SNS運用の内製化</span>
+        <h3>リサーチから数値分析まで、<br>運用の流れを1つの画面に</h3>
+        <p>Instagram・TikTok・X・Threadsの運用を、「リサーチ → コンセプト設計 → プロフィール → 企画 → 台本・撮影書 → 数値分析」の流れに沿って進められる運用ツールです。</p>
+        <ul>
+          <li>ヒアリングシート（PDF）を読み込んで、AIがリサーチを開始</li>
+          <li>蓄積したナレッジを「生成ルール」として台本づくりに自動で反映</li>
+          <li>企画・台本のストック、平均保存率などの数字をダッシュボードで確認</li>
+          <li>競合分析・動画編集・絵コンテ作成のツールもまとめて管理</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="work">
+      <div class="work-shots"><img class="shot" src="assets/img/scheduler.png" alt="SNS予約投稿ツールの新規投稿画面" data-cap="SNS予約投稿ツール：1つの投稿を複数のSNS・アカウントへ同時に予約"></div>
+      <div class="work-info">
+        <span class="label">投稿業務の効率化</span>
+        <h3>1つの投稿を、<br>5つのSNSへまとめて予約</h3>
+        <p>YouTube・Instagram・TikTok・X・Threadsへの投稿を、1画面でまとめて予約できるツールです。複数アカウントの運用でも、投稿のし忘れや二重投稿を防げます。</p>
+        <ul>
+          <li>複数のSNS・複数のアカウントへ同じ内容をまとめて予約</li>
+          <li>SNSごとの文字数・添付のチェック、個別の本文にも対応</li>
+          <li>予約カレンダー・投稿履歴・実行ログで状況を確認</li>
+          <li>よく使う時間帯をワンタップで指定</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="work">
+      <div class="work-shots two">
+        <img class="shot wide" src="assets/img/learn-courses.webp" alt="学習サイトの講座一覧" data-cap="学習サイト：シリーズごとの講座一覧">
+        <img class="shot" src="assets/img/learn-lessons3.webp" alt="学習サイトのレッスン一覧" data-cap="レッスン一覧：番号と目安の時間つき">
+        <img class="shot" src="assets/img/learn-article.png" alt="学習サイトの教材ページ" data-cap="教材ページ：表・囲み・頼み方の例で読みやすく">
+      </div>
+      <div class="work-info">
+        <span class="label">社内教育・オンライン講座</span>
+        <h3>社内研修にも販売用の講座にも使える<br>学習サイト</h3>
+        <p>講座・レッスン・教材ページ・完了の記録までそろった学習サイトです。社員向けのAI研修や、お客さま向けのオンライン講座として使えます。</p>
+        <ul>
+          <li>講座 → レッスン → 教材ページの3階層。動画・外部リンクにも対応</li>
+          <li>教材はテキストで追加でき、表・囲み・折りたたみの解答も表示</li>
+          <li>レッスンの完了の記録、前後のレッスンへの移動</li>
+          <li>管理者画面から講座・レッスンの追加・並べ替え・公開の切り替え</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="work">
+      <div class="work-shots two">
+        <img class="shot wide" src="assets/img/db-list.png" alt="日本語学校の応募者管理の一覧" data-cap="業務データベース：応募者の状況・書類・期限・入金を一覧で">
+        <img class="shot" src="assets/img/db-student.png" alt="応募者の詳細画面" data-cap="詳細画面：ステータスの進み具合と事務メモ">
+        <img class="shot" src="assets/img/db-schedule.png" alt="日程とリマインドの画面" data-cap="日程とリマインド：期限に合わせて連絡文を作成">
+        <img class="shot wide" src="assets/img/db-documents.png" alt="必要書類の管理画面" data-cap="必要なドキュメント：書類ごとの件数・確認・差し替え">
+      </div>
+      <div class="work-info">
+        <span class="label">Excel・紙からの脱却</span>
+        <h3>業務の流れに合わせた<br>専用のデータベース</h3>
+        <p>日本語学校への留学生の応募を管理する業務データベースです。学校・入学時期ごとの応募者、書類の状況、面接日、入金の期限を1つの画面で管理できます。</p>
+        <ul>
+          <li>「書類不備あり」「入金期限7日以内」など、今やるべきことで絞り込み</li>
+          <li>応募から入学までのステータスを一目で確認</li>
+          <li>書類ごとの格納・確認・差し替えの管理</li>
+          <li>期限に合わせたリマインドの文章をワンクリックで作成</li>
+        </ul>
+        <p class="note">※画面はデモ用のサンプルデータです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Funnel ==================== -->
+<section id="funnel">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-en">MARKETING FUNNEL</div>
+      <h2 class="sec-title">SNS広告からLINE構築まで、<br>「申し込みまでの道すじ」を設計して作ります</h2>
+      <p class="sec-lead">広告やSNSで知ってもらった人が、LINEに登録し、少しずつ信頼を深めて、申し込みに至るまで。シナリオを図にして共有し、配信・フォーム・タグまで実装します。下は、実際に設計した導線の例です。</p>
+    </div>
+    <div class="funnel-cases">
+      <div class="case reveal">
+        <div class="case-head"><small>CASE 01</small><h3>アニマルコミュニケーション講座</h3><p>登録アンケート → プレゼント動画 → 体験説明会・個別相談</p></div>
+        <div class="case-body">
+          <div class="fstep"><div class="dot">📱</div><div><h4>SNS・広告で知ってもらう</h4><p>ペットとの暮らしの悩みに寄りそう発信から、LINEへ案内</p></div></div>
+          <div class="fstep key"><div class="dot">💬</div><div><h4>LINE友だち追加 → 登録アンケート</h4><p>回答フォームでペットの名前や悩みを聞き、以降のメッセージに名前を差し込む</p><div class="chips"><span>回答フォーム</span><span>友だち情報欄</span><span>タグ付与</span></div></div></div>
+          <div class="fstep"><div class="dot">🎁</div><div><h4>プレゼント動画のお渡し</h4><p>「ペットも自分も幸せになる、7つのエネルギーワーク」</p></div></div>
+          <div class="fstep"><div class="dot">🗓</div><div><h4>3日間のステップ配信</h4><p>リッチメッセージ5枚で、体験説明会の価値を段階的に伝える</p><div class="chips"><span>シナリオ2本</span><span>リッチメッセージ5枚</span></div></div></div>
+          <div class="fstep key"><div class="dot">✅</div><div><h4>体験説明会の申込 ／ 個別相談</h4><p>申込フォームから決済案内まで自動で。申込済みの人には案内が届かないよう配信から除外</p><div class="chips"><span>申込フォーム</span><span>決済案内</span><span>除外条件</span></div></div></div>
+        </div>
+        <div class="case-foot"><b>ポイント：</b>タグで「回答済み」「申込済み」「決済済み」を管理し、一人ひとりの状態に合ったメッセージだけが届く設計</div>
+      </div>
+      <div class="case reveal">
+        <div class="case-head"><small>CASE 02</small><h3>マシュマロタッチアート講座</h3><p>動画広告 → セルフケア体験会 → 講座案内 → 購入者フォロー</p></div>
+        <div class="case-body">
+          <div class="fstep"><div class="dot">🎬</div><div><h4>トーク型の動画広告</h4><p>台本と撮影指示書から制作。悩みに共感する語りで、体験会への関心を集める</p><div class="chips"><span>広告台本</span><span>撮影カットリスト</span></div></div></div>
+          <div class="fstep key"><div class="dot">💬</div><div><h4>LINE登録 → かんたんアンケート</h4><p>回答に合わせて、届けるプレゼント動画のメッセージを出し分け</p></div></div>
+          <div class="fstep"><div class="dot">🗓</div><div><h4>4日間の体験会セールス</h4><p>私の話 → 悩み訴求 → 体験者の声 → 心の診断 → 特典 → 締切のお知らせ</p><div class="chips"><span>朝・夜の配信</span><span>診断コンテンツ</span><span>特典の締切</span></div></div></div>
+          <div class="fstep key"><div class="dot">✨</div><div><h4>体験会 → 講座のご案内</h4><p>体験会の参加者に7日間・13通の講座案内。購入した瞬間に案内を自動で停止</p><div class="chips"><span>購入タグで即停止</span></div></div></div>
+          <div class="fstep"><div class="dot">🤝</div><div><h4>購入者フォロー（30日間）</h4><p>受講を続けてもらうためのフォロー配信。未購入の方には別のフォローで再提案</p></div></div>
+        </div>
+        <div class="case-foot"><b>ポイント：</b>「購入済みの人に締切のお知らせが届く」といった失敗を、タグと停止条件の設計で防ぐ</div>
+      </div>
+    </div>
+    <div class="funnel-build">
+      <div class="fb reveal"><div class="e">🎯</div><b>導線の設計</b><span>シナリオを図にして共有</span></div>
+      <div class="fb reveal"><div class="e">🎬</div><b>広告・SNS動画</b><span>台本・撮影指示・編集</span></div>
+      <div class="fb reveal"><div class="e">📄</div><b>LP・フォーム</b><span>申込・アンケート・決済案内</span></div>
+      <div class="fb reveal"><div class="e">💬</div><b>LINEシナリオ</b><span>配信文・リッチメッセージ</span></div>
+      <div class="fb reveal"><div class="e">🏷</div><b>タグ・分岐</b><span>状態ごとの出し分け・停止</span></div>
+      <div class="fb reveal"><div class="e">📈</div><b>分析・改善</b><span>数字を見て配信を直す</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Video ==================== -->
+<section class="bg-ivory" id="video">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-en">VIDEO EDITING</div>
+      <h2 class="sec-title">SNS・広告の動画編集</h2>
+      <p class="sec-lead">企画・台本から編集まで、目的に合わせた縦型動画を制作します。最後まで見てもらうためのテンポ、テロップ、図解、音量の調整まで行います。動画を押すと再生します。</p>
+    </div>
+    <div class="videos">
+      <div class="vcard reveal">
+        <div class="vframe"><video src="assets/video/ai-explainer.mp4" poster="assets/video/ai-explainer.jpg" playsinline preload="none"></video><div class="play"><span></span></div></div>
+        <div class="vinfo"><h3>AI活用の解説動画</h3><p>会話のシーンと、AIの実演画面をスライドにして差し込み、操作の流れが一目で分かる構成に。</p><div class="chips"><span>実演画面のスライド化</span><span>テロップ</span><span>解説型</span></div></div>
+      </div>
+      <div class="vcard reveal">
+        <div class="vframe"><video src="assets/video/tax-reel.mp4" poster="assets/video/tax-reel.jpg" playsinline preload="none"></video><div class="play"><span></span></div></div>
+        <div class="vinfo"><h3>専門知識の解説リール</h3><p>税金の話を、冒頭の強いフック、見本の書類の図解、要点の強調テロップで分かりやすく。</p><div class="chips"><span>冒頭フック</span><span>図解の差し込み</span><span>強調テロップ</span><span>音量調整</span></div></div>
+      </div>
+      <div class="vcard reveal">
+        <div class="vframe"><video src="assets/video/beauty-vlog.mp4" poster="assets/video/beauty-vlog.jpg" playsinline preload="none"></video><div class="play"><span></span></div></div>
+        <div class="vinfo"><h3>1人称の密着Vlog</h3><p>美容部員の施術Vlog。移動と固定のカットを組み合わせたテンポのある編集で、人柄を伝える。</p><div class="chips"><span>Vlog</span><span>テンポ編集</span><span>ぼかし処理</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Efficiency ==================== -->
+<section id="efficiency">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-en">EFFICIENCY</div>
+      <h2 class="sec-title">営業・事務・バックオフィスで、<br>AIに任せられること</h2>
+      <p class="sec-lead">どの会社にもある業務の中に、AIで速く・正確にできる作業がたくさんあります。部署ごとの例を紹介します。どの業務から始めるかは、業務の棚卸し（STEP02）で一緒に決めます。</p>
+    </div>
+    <div class="jobs-tabs reveal" id="jobsTabs">
+      <button class="jtab on" data-j="0">営業</button>
+      <button class="jtab" data-j="1">事務</button>
+      <button class="jtab" data-j="2">マーケティング</button>
+      <button class="jtab" data-j="3">人事</button>
+      <button class="jtab" data-j="4">経理</button>
+    </div>
+    <div id="jobsPanels"></div>
+    <div class="jnote reveal">
+      <p><b>守るべきところは、人が守ります。</b>個人情報や社外秘の情報の扱い、AIに任せない判断（採用の合否・お金の承認など）を、社内のルールとして一緒に決めてから導入します。</p>
+      <a class="btn btn-gold" href="#contact">自社の業務で相談する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Learn ==================== -->
+<section class="bg-ivory" id="learn">
+  <div class="wrap learn">
+    <div class="learn-shots reveal">
+      <img class="shot" src="assets/img/learn-courses.webp" alt="学習サイトの講座一覧" data-cap="AI活用・SNS運用の講座">
+      <img class="shot" src="assets/img/learn-lessons1.webp" alt="レッスン一覧" data-cap="レッスン一覧">
+      <img class="shot" src="assets/img/learn-article.png" alt="教材ページ" data-cap="教材ページ">
+    </div>
+    <div class="reveal">
+      <div class="sec-en">TRAINING</div>
+      <h2 class="sec-title">作って終わりにしない。<br>社内で使いこなせるまで。</h2>
+      <p class="sec-lead">ツールを入れても、使われなければ意味がありません。AI活用とSNS運用の学習教材（自社制作）を使い、社員の方が自分で使いこなせる状態まで支援します。</p>
+      <ul>
+        <li>AIの基礎・頼み方・リスクから、職種別の使い方まで学べる教材</li>
+        <li>全社向けの基礎研修と、部署別の実践研修</li>
+        <li>社内のAI利用ガイドラインの作成</li>
+        <li>推進役の育成と、使い方の事例の共有</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="sec-en">FAQ</div>
+      <h2 class="sec-title">よくあるご質問</h2>
+    </div>
+    <div class="faq reveal">
+      <div class="qa"><button>ITやAIに詳しい社員がいなくても大丈夫ですか？</button><div class="ans"><p>大丈夫です。むしろ、詳しい方がいない会社こそご相談ください。業務の流れを伺いながら、こちらで整理・設計・開発を行い、使い方の研修やマニュアルもご用意します。</p></div></div>
+      <div class="qa"><button>まだ何をAI化したいか決まっていません。</button><div class="ans"><p>問題ありません。最初のヒアリングと業務の棚卸しで、時間がかかっている業務を一緒に洗い出し、効果・難しさ・リスクを比べて、最初に取り組む業務を決めます。</p></div></div>
+      <div class="qa"><button>社外秘の情報や個人情報の扱いが心配です。</button><div class="ans"><p>導入の前に、入力してよい情報・いけない情報、使ってよいツール、確認の手順を、社内のルールとして一緒に決めます。採用の合否やお金の承認など、AIに任せない判断もあらかじめ決めておきます。</p></div></div>
+      <div class="qa"><button>開発したツールは、契約が終わった後も使えますか？</button><div class="ans"><p>はい。業務で使い続けられるように、使い方と、直すときの手順をまとめた資料をお渡しします。権利や保守の範囲は、ご契約の前に取り決めます。</p></div></div>
+      <div class="qa"><button>マーケティングだけ、業務効率化だけの相談もできますか？</button><div class="ans"><p>できます。SNS運用・広告・LINE構築・動画編集だけのご相談も、AIの導入・業務ツールの開発だけのご相談も承ります。</p></div></div>
+      <div class="qa"><button>料金はどのくらいかかりますか？</button><div class="ans"><p>ご支援の範囲（顧問としての相談・研修・開発・マーケティングの実行など）によって変わります。無料相談でお話を伺ったうえで、内容とお見積りをご提案します。</p></div></div>
+      <div class="qa"><button>オンラインでも対応できますか？</button><div class="ans"><p>はい。ヒアリング・打ち合わせ・研修は、オンラインで全国対応しています。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA ==================== -->
+<section class="cta" id="contact">
+  <div class="wrap cta-grid">
+    <div class="reveal">
+      <div class="sec-en" style="color:var(--gold)">CONTACT</div>
+      <h2>まずは、今の業務の<br><span>「困っていること」</span>を<br>聞かせてください。</h2>
+      <p>無料相談では、事業と業務のお話を伺い、AIやデジタルで変えられそうなところを一緒に整理します。売り込みはしません。</p>
+      <ul class="cta-points">
+        <li>相談は無料・オンラインで対応</li>
+        <li>何をAI化するか決まっていなくても大丈夫</li>
+        <li>マーケティングだけ・業務効率化だけのご相談もOK</li>
+      </ul>
+    </div>
+    <form class="contact reveal" id="contactForm" novalidate>
+      <div class="f-row"><label>会社名・屋号</label><input type="text" name="company" placeholder="例：株式会社〇〇"></div>
+      <div class="f-row"><label>お名前<span class="req">必須</span></label><input type="text" name="name" placeholder="例：山田 太郎"></div>
+      <div class="f-row"><label>メールアドレス<span class="req">必須</span></label><input type="email" name="email" placeholder="例：taro@example.com"></div>
+      <div class="f-row"><label>ご相談の内容（複数選択可）</label>
+        <div class="checks">
+          <label><input type="checkbox" name="topic" value="AI導入・業務効率化">AI導入・業務効率化</label>
+          <label><input type="checkbox" name="topic" value="業務ツール・DB開発">業務ツール・DB開発</label>
+          <label><input type="checkbox" name="topic" value="SNS運用・広告">SNS運用・広告</label>
+          <label><input type="checkbox" name="topic" value="LINE構築">LINE構築</label>
+          <label><input type="checkbox" name="topic" value="動画編集">動画編集</label>
+          <label><input type="checkbox" name="topic" value="社内研修">社内研修</label>
+        </div>
+      </div>
+      <div class="f-row"><label>お困りごと・ご質問</label><textarea name="message" placeholder="例：営業の日報と見積書の作成に時間がかかっている／LINEの登録はあるが申し込みにつながらない など"></textarea></div>
+      <button class="btn btn-gold" type="submit">無料相談を申し込む →</button>
+      <p class="f-err" id="fErr">お名前と、正しい形式のメールアドレスを入力してください。</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-inner">
+      <a class="logo" href="#top"><span class="logo-mark">AI</span><span class="logo-text">AI顧問<small>AI ADVISORY &amp; BUILD</small></span></a>
+      <nav class="f-nav">
+        <a href="#service">サービス</a><a href="#flow">支援の流れ</a><a href="#works">開発実績</a><a href="#funnel">マーケ導線</a><a href="#video">動画編集</a><a href="#faq">よくある質問</a><a href="#" data-modal="privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <p class="copy">© AI顧問 All Rights Reserved.</p>
+  </div>
+</footer>
+
+<div class="sp-cta"><a class="btn btn-gold" href="#contact">無料相談する</a></div>
+<button id="totop" aria-label="ページの先頭へ">↑</button>
+
+<div class="overlay lightbox" id="lightbox"><button class="x" aria-label="閉じる">×</button><div><img id="lbImg" alt=""><p class="cap" id="lbCap"></p></div></div>
+<div class="overlay" id="modalOv"><div class="modal"><button class="x" aria-label="閉じる">×</button><h3 id="mTitle"></h3><p id="mBody"></p><button class="btn btn-gold" id="mOk">閉じる</button></div></div>
+
+<script>
+/* =====================================================
+   設定：お問い合わせの送信先（ここを書き換えてください）
+   email にアドレスを入れると、フォームからメール作成画面が開きます。
+   formEndpoint にフォーム送信サービスのURLを入れると、そちらへ送信します。
+===================================================== */
+const CONTACT = { email: "", formEndpoint: "" };
+
+/* ---------- ナビ・ハンバーガー ---------- */
+const nav = document.getElementById('gnav'), hb = document.getElementById('hamburger');
+hb.addEventListener('click', () => { nav.classList.toggle('open'); hb.classList.toggle('on'); });
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); hb.classList.remove('on'); }));
+
+/* ---------- スクロールで表示 ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- 数字のカウントアップ ---------- */
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if(!e.isIntersecting) return; cio.unobserve(e.target);
+  const el = e.target, to = +el.dataset.to, t0 = performance.now(), dur = 1200;
+  const tick = t => { const p = Math.min(1,(t-t0)/dur); el.textContent = Math.round(to*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}), {threshold:.5});
+document.querySelectorAll('.count').forEach(el => cio.observe(el));
+
+/* ---------- 支援の流れ ---------- */
+const FLOW = [
+  {t:"事業のヒアリング・課題の確認", d:"事業の内容・お客さま・強み・売上の作り方と、今いちばん困っていることを伺います。「AIで何をするか」ではなく、「事業としてどうなりたいか」から始めます。", out:["事業と課題の整理シート","目指す状態（ゴール）の言語化","最初に取り組む領域の仮説"]},
+  {t:"業務の棚卸し", d:"現場の方に、毎日・毎週の業務と、1回にかかる時間を書き出してもらいます。1つの業務を手順に分けて、どこに時間がかかっているかを見える化します。", out:["業務の一覧（頻度・時間）","業務ごとの手順の分解","時間・ミスが多い業務の特定"]},
+  {t:"AIで効率化できること・新しくできることの選定", d:"手順ごとに「AIに任せる」「AIに手伝ってもらう」「人がやる」を判定し、効果・難しさ・リスクで優先順位を付けます。効率化だけでなく、AIで新しくできるようになること（新しいサービス・集客）も提案します。", out:["AI化マップ","効果の試算（削減時間 × 回数 × 人数）","取り組む順番と試行の計画"]},
+  {t:"要件定義", d:"作るものの画面・扱うデータ・使う人と権限・社内のルールを、画面のイメージを見ながら一緒に決めます。個人情報の扱いや、AIに任せない判断もここで決めます。", out:["要件定義書（画面・データ・権限）","社内の利用ルール","試行で確かめる指標"]},
+  {t:"プロダクト開発", d:"業務ツール・データベース・自動化・LINEの導線などを開発します。小さく作って実際の業務で試し、画面を見ながらその場で直していきます。", out:["動くツール・仕組み","使い方のマニュアル","社内向けの研修"]},
+  {t:"改善", d:"実際に使ってみた結果を数字で確かめ、使いにくいところ・効果が出ていないところを一緒に直します。うまくいった仕組みは、次の業務・部署に広げていきます。", out:["利用状況と効果のレポート","改善の実施","次の業務への展開の計画"]}
+];
+const fd = document.getElementById('flowDetail'), steps = document.querySelectorAll('#flowSteps .step');
+function showFlow(i){
+  steps.forEach(s => s.classList.toggle('active', +s.dataset.i === i));
+  const f = FLOW[i];
+  fd.innerHTML = `<div><div class="sec-en">STEP ${String(i+1).padStart(2,'0')}</div><h3>${f.t}</h3><p>${f.d}</p></div><div class="side"><h5>この段階でできあがるもの</h5><ul>${f.out.map(o=>`<li>${o}</li>`).join('')}</ul></div>`;
+}
+steps.forEach(s => s.addEventListener('click', () => showFlow(+s.dataset.i)));
+showFlow(0);
+
+/* ---------- 開発実績のタブ ---------- */
+const wtabs = document.querySelectorAll('.wtab'), works = document.querySelectorAll('.work');
+wtabs.forEach(t => t.addEventListener('click', () => {
+  wtabs.forEach(x => x.classList.toggle('on', x === t));
+  works.forEach((w,i) => w.classList.toggle('on', i === +t.dataset.w));
+}));
+
+/* ---------- 業務効率化（職種別） ---------- */
+const JOBS = [
+  [["商談前の企業リサーチ","ホームページやニュースを見て回り、1社に約50分","出典つきで要点をまとめ、課題の仮説と質問まで約15分（目安）"],
+   ["提案書・見積もりの説明文","白紙から構成を考え、数時間","商談メモから構成と下書きを作成。金額は人が価格表から"],
+   ["商談の記録とお礼メール","翌日に議事録とお礼メールを作成","1つの録音・メモから、議事録・お礼メール・社内記録を同時に"],
+   ["見込み客へのアプローチ文","同じ文面を一斉送信","相手ごとに書き分けた文章を、数を落とさず作成"],
+   ["商談の練習","上司や先輩の時間が取れない","AIがお客さま役になり、反論への対応をいつでも練習"],
+   ["営業支援システムへの入力","面倒で記録が残らない","要約を決まった項目で作り、貼るだけで記録"]],
+  [["社内外のメール・文書","1通ごとに一から作成","種類別のテンプレートと、送る前のAIチェック"],
+   ["会議の議事録","会議の後に40分","文字起こしから、決定事項・宿題・期限を自動で整理"],
+   ["業務マニュアル","担当者しか手順が分からない","作業しながら話して録音するだけで、マニュアルの下書きに"],
+   ["スプレッドシートの集計","手作業で並べ替え・集計","関数・ピボットをAIと作成し、毎月の集計を自動に"],
+   ["書類の確認","忙しい時期に見落とし","AIを「2人目の確認者」にして、記入漏れや食い違いを発見"],
+   ["定型作業","毎日同じ作業をくり返す","GASなどで、ボタン1つ・決まった時間に自動で実行"]],
+  [["市場・競合のリサーチ","思いついたときだけ調査","毎月の競合レポートを定例化し、営業にも共有"],
+   ["ペルソナ設計","担当者の想像で作る","顧客データと営業の声から作り、部署で共有"],
+   ["広告文・LPの文章","案が少なく、テストできない","切り口ごとに20案を出し、社内基準と法律を確認して公開"],
+   ["SNS投稿","ネタ切れで止まる","テーマ × 切り口で1ヶ月分の企画と下書きをまとめて作成"],
+   ["画像・バナー","素材探しに時間がかかる","AIで素材を作り、ブランドのテンプレートで量産"],
+   ["数値レポート","月初の数日が数字集めで消える","データを集約し、レポートの下書きを自動で作成"]],
+  [["求人票","職種ごとにばらばらの書き方","職種別のテンプレートと法令のチェックリストで作成"],
+   ["スカウト文","一斉送信で返信が少ない","経験の要点に合わせて1人ずつ書き分け"],
+   ["面接の質問と評価基準","面接官ごとに評価がばらばら","質問と評価の基準をそろえる（合否はAIに判断させない）"],
+   ["社内規程の問い合わせ","同じ質問に何度も回答","規程をもとに答える社内ヘルプデスク・FAQ"],
+   ["研修資料","1つの研修に数日","目的から、スライド・台本・理解度テストまで一式を作成"],
+   ["1on1の準備","準備なしで雑談になる","テーマの候補と質問を準備し、約束したことを整理"]],
+  [["仕訳・経費精算のチェック","全件を目で確認","自動の提案と規程チェックで、例外だけを人が確認"],
+   ["月次レポート","締めから資料まで日数がかかる","比較の表と文章の下書きを作成。理由は経理が書く"],
+   ["資金繰り表","表づくりと予定の把握が大変","表の形と計算式をAIで作り、部門の予定を集める仕組みに"],
+   ["関数・マクロ","作った人しか直せない","AIで作り、説明と管理台帳を残して引き継げる形に"],
+   ["請求書の処理","受け取り・照合・保存が手作業","読み取り・照合・電子保存の流れに。振込先の変更は電話で確認"],
+   ["制度の調べもの","毎年同じことを調べる","AIで手がかりを得て、一次情報と税理士で確認し判断集に"]]
+];
+const jp = document.getElementById('jobsPanels');
+jp.innerHTML = JOBS.map((list,i) => `<div class="jpanel ${i===0?'on':''}"><div class="jgrid">${list.map(([t,b,a]) =>
+  `<div class="jcard"><h4>${t}</h4><div class="ba"><b class="b">これまで</b><p class="bf">${b}</p><b class="a">AIで</b><p>${a}</p></div></div>`).join('')}</div></div>`).join('');
+const jtabs = document.querySelectorAll('.jtab'), jpanels = jp.querySelectorAll('.jpanel');
+jtabs.forEach(t => t.addEventListener('click', () => {
+  jtabs.forEach(x => x.classList.toggle('on', x === t));
+  jpanels.forEach((p,i) => p.classList.toggle('on', i === +t.dataset.j));
+}));
+
+/* ---------- 動画：押すと再生、他の動画は止める ---------- */
+document.querySelectorAll('.vframe').forEach(fr => {
+  const v = fr.querySelector('video');
+  fr.addEventListener('click', () => {
+    if(v.paused){
+      document.querySelectorAll('.vframe video').forEach(o => { if(o!==v){ o.pause(); } });
+      v.controls = true; v.play(); fr.classList.add('playing');
+    }
+  });
+  v.addEventListener('pause', () => { if(v.currentTime === 0 || v.ended) fr.classList.remove('playing'); });
+  v.addEventListener('ended', () => { fr.classList.remove('playing'); v.controls = false; });
+});
+
+/* ---------- 画像の拡大表示 ---------- */
+const lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg'), lbCap = document.getElementById('lbCap');
+document.querySelectorAll('img.shot, img.hv').forEach(img => img.addEventListener('click', () => {
+  lbImg.src = img.src; lbImg.alt = img.alt; lbCap.textContent = img.dataset.cap || img.alt; lb.classList.add('open');
+}));
+
+/* ---------- モーダル ---------- */
+const mOv = document.getElementById('modalOv');
+function openModal(title, body){ document.getElementById('mTitle').textContent = title; document.getElementById('mBody').textContent = body; mOv.classList.add('open'); }
+document.getElementById('mOk').addEventListener('click', () => mOv.classList.remove('open'));
+document.querySelectorAll('.overlay').forEach(ov => {
+  ov.addEventListener('click', e => { if(e.target === ov || e.target.classList.contains('x')) ov.classList.remove('open'); });
+});
+document.addEventListener('keydown', e => { if(e.key === 'Escape') document.querySelectorAll('.overlay').forEach(o => o.classList.remove('open')); });
+document.querySelectorAll('[data-modal="privacy"]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  openModal('プライバシーポリシー', 'お問い合わせでいただいた個人情報は、ご相談への回答とご連絡のためにのみ利用し、ご本人の同意なく第三者に提供することはありません。\n\n※正式なプライバシーポリシーの本文に差し替えてください。');
+}));
+
+/* ---------- FAQ ---------- */
+document.querySelectorAll('.qa button').forEach(b => b.addEventListener('click', () => {
+  const qa = b.parentElement, ans = qa.querySelector('.ans'), open = qa.classList.toggle('open');
+  ans.style.maxHeight = open ? ans.scrollHeight + 'px' : 0;
+}));
+
+/* ---------- お問い合わせ ---------- */
+document.getElementById('contactForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, err = document.getElementById('fErr');
+  const name = f.name.value.trim(), email = f.email.value.trim();
+  if(!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.style.display = 'block'; return; }
+  err.style.display = 'none';
+  const topics = [...f.querySelectorAll('input[name=topic]:checked')].map(c => c.value).join('、') || '未選択';
+  const body = `会社名・屋号：${f.company.value.trim()}\nお名前：${name}\nメール：${email}\nご相談の内容：${topics}\n\nお困りごと・ご質問：\n${f.message.value.trim()}`;
+  if(CONTACT.formEndpoint){
+    try{
+      const r = await fetch(CONTACT.formEndpoint, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({company:f.company.value, name, email, topics, message:f.message.value})});
+      if(!r.ok) throw 0;
+      f.reset(); openModal('お申し込みありがとうございます', '内容を確認のうえ、2営業日以内にご連絡いたします。');
+    }catch(_){ openModal('送信できませんでした', '時間をおいて、もう一度お試しください。'); }
+    return;
+  }
+  if(CONTACT.email){
+    location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent('【AI顧問】無料相談の申し込み')}&body=${encodeURIComponent(body)}`;
+    openModal('メールの作成画面を開きました', 'お使いのメールソフトで、そのまま送信してください。');
+    return;
+  }
+  openModal('送信先が未設定です（制作中の表示）', 'ページ内のスクリプトの「CONTACT」に、受け取り用のメールアドレスかフォーム送信サービスのURLを設定すると、このフォームから送信できるようになります。\n\n入力いただいた内容：\n' + body);
+});
+
+/* ---------- トップへ戻る ---------- */
+const tt = document.getElementById('totop');
+addEventListener('scroll', () => tt.classList.toggle('show', scrollY > 600), {passive:true});
+tt.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+</script>
+</body>
+</html>
